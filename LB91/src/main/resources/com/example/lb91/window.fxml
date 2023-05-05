@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.text.Font?>
 <BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.lb91.WindowController">
     <top>
         <VBox prefHeight="29.0" prefWidth="615.0" BorderPane.alignment="CENTER">
@@ -37,34 +34,26 @@
     <left>
         <Pane prefHeight="467.0" prefWidth="654.0" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutY="1.0" prefHeight="22.0" prefWidth="163.0" text="Create array X">
+                <Label layoutY="1.0" prefHeight="22.0" prefWidth="163.0" text="Create list">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </Label>
-                <TextArea fx:id="output" layoutY="69.0" prefHeight="65.0" prefWidth="615.0" />
                 <ToolBar layoutY="29.0" prefHeight="40.0" prefWidth="615.0">
                     <items>
                         <TextField fx:id="start" prefHeight="19.0" prefWidth="96.0" promptText="start" />
                         <TextField fx:id="end" prefHeight="19.0" prefWidth="96.0" promptText="end" />
                         <TextField fx:id="step" prefHeight="19.0" prefWidth="96.0" promptText="step" />
-                        <Button fx:id="go" mnemonicParsing="false" onAction="#countX" text="Button" />
                     </items>
                 </ToolBar>
-                <Label layoutX="1.0" layoutY="134.0" prefHeight="31.0" prefWidth="161.0" text="Create array Y">
-                    <font>
-                        <Font size="16.0" />
-                    </font>
-                </Label>
-                <ToolBar layoutY="165.0" prefHeight="35.0" prefWidth="615.0">
+                <ToolBar layoutY="69.0" prefHeight="35.0" prefWidth="615.0">
                     <items>
                         <TextField fx:id="one" prefHeight="25.0" prefWidth="73.0" promptText="a" />
                         <TextField fx:id="two" prefHeight="25.0" prefWidth="72.0" promptText="b" />
                         <TextField fx:id="three" prefHeight="25.0" prefWidth="65.0" promptText="c" />
-                        <Button fx:id="go1" mnemonicParsing="false" onAction="#createArrayY" text="Button" />
                     </items>
                 </ToolBar>
-                <TextArea fx:id="outPutY" layoutX="1.0" layoutY="200.0" prefHeight="49.0" prefWidth="615.0" />
+                <TextArea fx:id="outPutY" layoutX="1.0" layoutY="104.0" prefHeight="98.0" prefWidth="615.0" />
                 <Separator layoutX="1.0" layoutY="332.0" prefHeight="0.0" prefWidth="615.0" />
                 <Label layoutY="299.0" prefHeight="29.0" prefWidth="53.0" text="Sum Y: " />
                 <TextArea fx:id="sum" layoutX="82.0" layoutY="294.0" prefHeight="38.0" prefWidth="115.0" />

@@ -29,20 +29,13 @@ public class WindowController {
     Logic logic = new Logic();
 
 
-   /* public void createArrayX(ActionEvent actionEvent) {
-        double[] arrayX = getArrayX();
-        double begin =Double.parseDouble(start.getText());
-        double finish =Double.parseDouble(end.getText());
-        double stp =Double.parseDouble(step.getText());
-
-       output.setText("Кількість кроків : "+logic.count(begin,finish,stp));
-    }*/
-    public void countX(ActionEvent actionEvent){
+   /* public void count(ActionEvent actionEvent){
         double begin =Double.parseDouble(start.getText());
         double finish =Double.parseDouble(end.getText());
         double stp =Double.parseDouble(step.getText());
 
         output.setText("Кількість кроків : "+logic.count(begin,finish,stp));
+
     }
     public void countY(ActionEvent actionEvent){
         double begin =Double.parseDouble(one.getText());
@@ -50,41 +43,27 @@ public class WindowController {
         double stp =Double.parseDouble(three.getText());
 
         outPutY.setText("Кількість кроків : "+logic.count(begin,finish,stp));
-    }
+    }*/
 
-    private double[] getArrayX() {
+    private List <Point> getList() {
         double begin =Double.parseDouble(start.getText());
         double finish =Double.parseDouble(end.getText());
         double stp =Double.parseDouble(step.getText());
-        double[] arrayX=logic.createArrayX(begin,finish,stp);
-        return arrayX;
-    }
-
-    public void createArrayY(ActionEvent actionEvent) {
-        double[] arrayY = getArrayY();
-        StringBuilder str= new StringBuilder();
-        Formatter fmt =new Formatter(str);
-        for (int i = 0; i < arrayY.length; i++) {
-            fmt.format("y=%.2f ; ",arrayY[i]);
-        }
-        outPutY.setText("Кількість кроків : "+ Arrays.toString(str.toString().split(Arrays.toString(arrayY))));
-    }
-
-    private double[] getArrayY() {
         double a =Double.parseDouble(one.getText());
         double b =Double.parseDouble(two.getText());
         double c =Double.parseDouble(three.getText());
-        double[] arrayX= getArrayX();
-        double[] arrayY=logic.createArrayY(a,b,c,arrayX) ;
-        return arrayY;
+
+
+        return logic.createList(begin,finish,stp,a,b,c);
     }
 
     public void run(ActionEvent actionEvent) {
-        double[] masY = getArrayY();
-        sum.setText(String.format("%.2f",logic.sumY(masY)));
-        aver.setText(String.valueOf(logic.averageY(masY)));
-        imax.setText(String.valueOf(logic.imaxY(masY)));
-        imin.setText(String.valueOf(logic.iminY(masY)));
+        List <Point> list = getList();
+        sum.setText(String.format("%.2f",logic.sumY(list)));
+        aver.setText(String.format("%5.2f",(logic.averageY(list))));
+        imax.setText(String.valueOf(logic.imaxY(list)));
+        imin.setText(String.valueOf(logic.iminY(list)));
+        outPutY.setText("Кількість кроків : "+ list.size());
 
     }
 }

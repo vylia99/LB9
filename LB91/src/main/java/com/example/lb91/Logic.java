@@ -24,67 +24,41 @@ public class Logic {
         return (int)((end-begin)/h+1);
 
     }
-    public List<Point> createPoints(double a, double b, double c, double[] createArrayX) {
-        List<Point> points = new ArrayList<>();
-        double[] createArrayY = createArrayY(a, b, c, createArrayX);
-        for (int i = 0; i < createArrayX.length; i++) {
-            points.add(new Point());
-        }
+
+    public List<Point> createList(double begin, double end, double h, double a, double b, double c){
+             List <Point> points = new ArrayList<>();
+             int q=count(begin,end,h);
+               for (int i=0;i<q;i++){
+           double x=begin+i*h;
+           double y=functionY(a, b, c, x);
+           points.add(new Point(x,y));
+               }
         return points;
     }
-    public double[] createArrayX(double begin, double end, double h){
-        double[] arrayX = new double[count(begin,end,h)];
-        for (int i=0;i<arrayX.length;i++){
-            arrayX[i]=begin+i*h;
-        }
-        return arrayX;
-    }
-    public double[] createArrayY(double a, double b, double c, double[] arrayX) {
-        double[] arrayY = new double[arrayX.length];
-        for (int i = 0; i < arrayY.length; i++) {
-            arrayY[i] = functionY(a, b, c, arrayX[i]);
-        }
-        return arrayY;
-    }
-    public double minY(double[] y) {
-        double min=y[0];
-        for (int i = 0; i < y.length; i++)
-            if (min>y[i]  )
-                min = y[i];
-        return min;
-    }
 
-    public double maxY(double[] y) {
-        double max = y[0];
-        for (int i = 0; i < y.length; i++)
-            if (max < y[i])
-                max = y[i];
-        return max;
-    }
-
-    public int iminY(double[] y) {
-        int imin=0;
-        for (int i = 0; i < y.length; i++)
-            if (y[imin]>y[i]  )
+    public double iminY(List <Point> points) {
+        double imin=points.get(0).getY();
+        for (int i = 0; i <points.size(); i++)
+            if (imin>points.get(i).getY()  )
                 imin = i;
         return imin;
     }
-    public int imaxY(double[] y) {
-        int imax=0;
-        for (int i = 0; i < y.length; i++)
-            if (y[imax]<y[i]  )
+    public double imaxY(List <Point> points) {
+        double imax=points.get(0).getX();
+        for (int i = 0; i < points.size(); i++)
+            if (imax<points.get(i).getX())
                 imax = i;
         return imax;
     }
-    public double sumY(double[] y) {
+    public double sumY(List <Point> points) {
         double sum = 0;
-        for (int i = 0; i < y.length; i++)
-            sum = sum + y[i];
+        for (int i = 0; i < points.size(); i++)
+            sum = sum + points.get(i).getY();
         return sum; }
 
-    public double averageY(double[] y) {
+    public double averageY(List <Point> points) {
 
-        return Math.round(sumY(y) / y.length*1000)/1000;
+        return sumY(points) / points.size();
     }
 
 }
